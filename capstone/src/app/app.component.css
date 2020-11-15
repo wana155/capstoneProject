@@ -1,0 +1,48 @@
+#main{background-color:rgb(186, 186, 186);
+    font-family: serif;}
+
+    .titulo{font-size: 68px;
+        text-align: center;
+        font-style: cursive;}
+#hsma{font-size:20px;}
+#hsmall{font-size: 8px;}
+#titulo2{text-align: center;}
+
+
+.navbarro{color:  rgb(186, 186, 186);
+    font-size: 30px ;
+    text-align: center;
+    background-color:rgb(103, 48, 1);
+    }
+    .navbarro a:hover {
+    background-color:rgb(185, 122, 87);
+    color:rgb(255, 255, 255);
+    text-decoration: none;
+    }
+    
+    .navbarro a.active  {
+        background-color:rgb(255, 102, 0);
+        color:rgb(255, 255, 255);
+        text-decoration: none;
+        }
+    
+    .pestanas{text-align: center;
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    padding-left: 25px;
+    padding-right: 25px;}
+
+    #four {
+
+        padding-left:20%;
+     }
+     .centeredTitle{
+         font-size: 2.8em;
+         padding: 1em;
+         padding-left: 10%;
+         padding-bottom: .5em;
+          color: black;
+      }
+    
+     

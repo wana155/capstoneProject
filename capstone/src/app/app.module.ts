@@ -3,10 +3,16 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ShopComponent } from './shop/shop.component';
+import { InComponent } from './in/in.component';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ShopComponent,
+    InComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
