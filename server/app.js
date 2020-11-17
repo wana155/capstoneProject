@@ -21,8 +21,11 @@ app.use(cors());  //Enamble CORS Features
 
 // import router
 var Product = require('./router/product.router.js');
+// import router
+var User = require('./router/user.router.js');
 // use a middleware
 app.use("/products",Product);
+app.use("/users",User);
 
 app.listen(port,()=>{console.log("Server is running in port: "+port);})
 //
