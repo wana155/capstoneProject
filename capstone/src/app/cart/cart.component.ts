@@ -10,25 +10,41 @@ import { ProductService } from '../product.service';
 export class CartComponent implements OnInit {
  products:Array<Product>;
  cart:Array<number>;
-
+ total:number;
  user:boolean;
 
   constructor(public productService:ProductService) { 
     this.products = new Array<Product>();
     this.cart = new Array();
-     this.cart[0]=1;
-    this.cart.push(1);
+    this.cart[0]=1;
+    this.cart.push(2);
     this.cart.push(4);
     this.user = true;
-    this.loadProducts();
+    console.log("constructor")
+    this.UpdateCart();
+    this.total=0;
   }
 
   ngOnInit(): void {
-    this.loadProducts();
+    console.log("INIT")
+   // this.loadProducts();
+   //this.computeTotal();
   }
 
-  loadProducts():void{
-    this.productService.getAllProducts().subscribe(data=>this.products=data);
+  computeTotal():void{
+    for(let b of this.cart)
+    {
+      this.total = this.total+(b);
+    }
+  }
+
+  UpdateCart():void{
+    this.productService.getAllProducts().subscribe(data=>{
+      this.products=data; 
+      for(let b of this.cart)
+      {
+      this.total = this.total+(this,this.products[b-1].price);}
+    });
   }
 
 }

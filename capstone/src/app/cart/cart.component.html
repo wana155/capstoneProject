@@ -1,32 +1,52 @@
 <p>cart works!</p>
 
 
-<div *ngIf="user" class="container">
-    
+<div *ngIf="user" class="container formo">
+    <div *ngFor="let c of cart" class="">
     <div class="row" style="Background-color: white; padding: 25px; border-radius: 15px;">
-    
-        <div *ngFor="let c of cart" class=""></div>
-        <div class="col-4" st>
+        
+        <div class="col-4" >
             <img id="allView" src="../../assets/images/{{c}}.jpg" class="img-fluid" alt="">
         </div>
         <div class="col-4">
             <div class="allViewDesc">
-                <h4>{{products[1].title}}</h4>
+                
+                <h4>{{products[c-1].title}}</h4>
                 <hr>
-
-                <p>${{products[1].price}}</p>
-                <p>⭐️: {{products[1].rating}} Ratings</p>
-                <p> {{products[1].description}}</p>
+                <div class="row">
+                    <div class="col-6">
+                        <p>⭐️: {{products[c-1].rating}}</p>
+                    </div>
+                    <div class="col-6">
+                        <p>🏷: {{products[c-1].size}}</p>
+                    </div>
+                </div>
+                
+                <p> {{products[c-1].description.substring(0,180)}}...</p>
             </div>
         </div>
         <div class="col-4">
-            <div class="allViewDesc" style="border-style: solid; border-width: 10px;margin-top: 60px;">
-           <button class="btn btn-warning" > 🛒 Add to Cart</button>
+            <div class="allViewDesc" style="margin-top: 60px;">
+                <p>${{products[c-1].price}}</p>
            <p style="padding-top: 20px;">🚚: FREE Shipping on orders over $25</p>
             </div>
         </div>
+      </div>
     </div>
-
+    <hr>
+    <div *ngIf="user" class="container formt" style="background-color: white;">
+        <div class="row" style="">
+            <div class="col-4" style="padding-top: 34px; padding-left: 60px;">
+                <p>Total: </p>
+            </div>
+            <div class="col-4" style="padding-top: 34px; padding-left: 60px;">
+                <p>${{total}}</p>
+            </div>
+            <div class="col-4" style="padding-top: 30px; padding-left: 60px;">
+                <button class="btn btn-warning"  > 🛒 Proceed to Checkout</button>
+            </div>
+    
+        </div>
+    <hr>
     </div>
-<hr>
-</div>
+ </div>
