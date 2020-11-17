@@ -1,11 +1,67 @@
 <p>shop works!</p>
+<button (click)="loadProducts()" class=" btn btn-success"> pusha</button>
 
-<div>
-    <div *ngFor="let p of products">
-        <p>{{p.title}}</p>
-        <p>{{p.price}}</p>
-        <p>{{p.description}}</p>
+<div *ngIf="single" class="container">
+    <div class="row" style="Background-color: white; padding: 25px; border-radius: 15px;">
+        
+        <div class="col-4" st>
+            <img id="allView" src="../../assets/images/{{oneProduct.images}}.jpg" class="img-fluid" alt="">
+        </div>
+        <div class="col-4">
+            <div class="allViewDesc">
+                <h4>{{oneProduct.title}}</h4>
+                <hr>
 
+                <p>${{oneProduct.price}}</p>
+                <p>⭐️: {{oneProduct.rating}} Ratings</p>
+                <p> {{oneProduct.description}}</p>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="allViewDesc" style="border-style: solid; border-width: 10px;margin-top: 60px;">
+           <button class="btn btn-warning" > 🛒 Add to Cart</button>
+           <p style="padding-top: 20px;">🚚: FREE Shipping on orders over $25</p>
+            </div>
+        </div>
     </div>
+<hr>
+</div>
 
+<div *ngIf="flag">
+
+<div class="container" *ngFor="let i of pgroups">
+   <div class="row">
+      <div class="col-4">
+       <a (click)="openElement(i[0])"> <div class="formo">
+            <img id="allView" src="../../assets/images/{{i[0].images}}.jpg" class="img-fluid" alt="">
+            <div class="allViewDesc">
+                <p>{{i[0].title}}</p>
+                <p>⭐️: {{i[0].rating}} Ratings</p>
+                <p>🚚: FREE Shipping on orders over $25</p>
+            </div>
+        </div>
+    </a>
+      </div>
+      <div class="col-4">
+        <a (click)="openElement(i[1])"> <div class="formo">
+            <img id="allView" src="../../assets/images/{{i[1].images}}.jpg" class="img-fluid" alt="">
+            <div class="allViewDesc">
+                <p>{{i[1].title}}</p>
+                <p>⭐️: {{i[1].rating}} Ratings</p>
+                <p>🚚: FREE Shipping on orders over $25</p>
+            </div>
+        </div></a>
+      </div>
+      <div class="col-4">
+        <a (click)="openElement(i[2])"><div class="formo">
+            <img id="allView" src="../../assets/images/{{i[2].images}}.jpg" class="img-fluid" alt="">
+            <div class="allViewDesc">
+                <p>{{i[2].title}}</p>
+                <p>⭐️: {{i[2].rating}} Ratings</p>
+                <p>🚚: FREE Shipping on orders over $25</p>
+            </div>
+        </div></a>
+      </div>
+    </div>
+  </div>
 </div>

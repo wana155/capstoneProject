@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { from } from 'rxjs';
 import { Product } from '../product.model';
+import { ProductService } from '../product.service';
 
 @Component({
   selector: 'app-shop',
@@ -8,19 +10,41 @@ import { Product } from '../product.model';
 })
 export class ShopComponent implements OnInit {
   products:Array <Product>;
+  pgroups: Array <any>;
+  oneProduct:Product;
+  flag:boolean;
+  single:boolean;
 
-  constructor() { 
+  
+
+  constructor(public productService:ProductService) { 
     this.products = new Array<Product>();
-    //Temporary:
-   var  product = new Product(100,"Flex Pants",25,"Large"," - 56% Cotton, 44% Polyester -Imported - Drawstring closure - Machine Wash - A relaxed leg and elastic, drawstring waistband bring lounge-ready style to this classic casual pant - Elastic cuffs at ankle and on-seam side pockets -Everyday made better: we listen to customer feedback and fine-tune every detail to ensure quality, fit, and comfort ",55);
-   this.products.push(product); 
-   var  product = new Product(200,"Shirt",12,"Small"," - 56% Cotton, 44% Polyester -Imported - Drawstring closure - Machine Wash - A relaxed leg and elastic, drawstring waistband bring lounge-ready style to this classic casual pant - Elastic cuffs at ankle and on-seam side pockets -Everyday made better: we listen to customer feedback and fine-tune every detail to ensure quality, fit, and comfort ",55);
-   this.products.push(product); 
-   
-   //T
+    this.pgroups = new Array();
+    this.single=false;
+    //this.flag=false;
+  
   }
 
   ngOnInit(): void {
+ 
   }
+
+  loadProducts():void{
+    this.productService.getAllProducts().subscribe(data=>this.products=data);
+    let i = 0;
+    for ( i=0;i<(this.products.length/3);i++)
+    {
+      this.pgroups[i]=[this.products[i*3],this.products[(i*3)+1],this.products[(i*3)+2]];
+    }
+    this.flag=true;
+  }
+  openElement(p:Product){
+    this.single = true;
+    this.oneProduct =p;
+    window.scrollTo(0, 300);
+  }
+  
+
+
 
 }
