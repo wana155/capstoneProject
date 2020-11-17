@@ -1,24 +1,33 @@
-<div class="container" style="padding: 30px; ">
+<div *ngIf="inform" class="container" style="padding: 30px; ">
     <div class="row" class="singIn">
         <br>
-        <form action="">
-            <h2>Sing in </h2><br>
-            Email: <input type="text" class="border-top-0 border-left-0 border-right-0" ><br><br>
-            Pasword:<input type="text" class="border-top-0 border-left-0 border-right-0"  ><br><br>
-            Admin: <input type="radio" id="yes" name="admin" value="yes"> <label style="padding-left:5px ; padding-right: 12px;">Yes</label>
-            <input type="radio" id="no" name="admin" value="no">
-            <label style="padding-left:5px ; padding-right: 12px;" >No</label>
-            <button class="btn btn-success" style="float: right; margin: 5%;padding-right: 37%;padding-left: 38%;" > Sing in</button>
+        <h2>Sing in </h2><br>
         
-        </form>
+            
+            Email: <input type="text" class="border-top-0 border-left-0 border-right-0" [(ngModel)]="loginEmail" required><br><br>
+            Pasword:<input type="password" class="border-top-0 border-left-0 border-right-0" [(ngModel)]="loginPass" required><br><br>
+            Admin: <input type="radio" id="yes" name="admin" value="yes" [(ngModel)]="loginAdmin"> <label style="padding-left:5px ; padding-right: 12px;">Yes</label>
+            <input type="radio" id="no" name="admin" value="no" [(ngModel)]="loginAdmin">
+            <label style="padding-left:5px ; padding-right: 12px;" >No</label>
+            <button (click)="singIn()" class="btn btn-success" style="float: right; margin: 5%;padding-right: 37%;padding-left: 38%;" > Sing in</button>
+        <p>{{loginAdmin}}--{{loginEmail}}--{{loginPass}}</p>
         <br>
         <br>
         <div>
             Don't Have An Account? <a href=""> Sing Up</a>
         </div>
-
-
+    </div>
+</div>
+<hr>
+<div *ngIf="userPortal" style="background-color: rgb(60, 60, 245);padding: 5%;">
+    <div style="background-color: brown;">
+       Welcome Back {{currentUser.fname}}, You are a user. Browse and shop Around!
     </div>
 
+</div>
+<div *ngIf="adminPortal" style="background-color: rgb(60, 60, 245);padding: 5%;">
+    <div style="background-color: brown;">
+       Welcome Back {{currentUser.fname}} You are a Admin.
+    </div>
 
 </div>

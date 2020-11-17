@@ -1,7 +1,8 @@
-<p>cart works!</p>
-
+<br>
+<p></p>
 
 <div *ngIf="user" class="container formo">
+    <h1 style="padding-top: 25px;">{{currentUser.fname}}'s Shopping Cart</h1>
     <div *ngFor="let c of cart" class="">
     <div class="row" style="Background-color: white; padding: 25px; border-radius: 15px;">
         
@@ -49,4 +50,8 @@
         </div>
     <hr>
     </div>
+ </div>
+
+ <div *ngIf="!user" class="container formo" style="height: 590px;">
+     <h2 style="padding-top: 80px;">oops! You have not logged in yet. Log in to see your cart! </h2>
  </div>

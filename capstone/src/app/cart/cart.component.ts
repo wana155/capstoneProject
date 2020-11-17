@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../product.model';
 import { ProductService } from '../product.service';
+import { SharingService } from '../sharing.service';
+import { User } from '../user.model';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-cart',
@@ -13,22 +16,33 @@ export class CartComponent implements OnInit {
  total:number;
  user:boolean;
 
-  constructor(public productService:ProductService) { 
+ users:Array<User>;
+
+ currentUser:User;
+
+  constructor(public productService:ProductService,public userService:UserService,private sharingService:SharingService) { 
     this.products = new Array<Product>();
+    this.users = new Array<User>();
     this.cart = new Array();
-    this.cart[0]=1;
-    this.cart.push(2);
-    this.cart.push(4);
-    this.user = true;
+    //this.cart[0]=1;
+    //this.cart.push(2);
+    //this.cart.push(4);
+    this.user = false;
     console.log("constructor")
     this.UpdateCart();
     this.total=0;
   }
 
   ngOnInit(): void {
-    console.log("INIT")
+   
    // this.loadProducts();
    //this.computeTotal();
+    this.currentUser =this.sharingService.getDataU();
+    if(this.currentUser!=undefined){
+      this.cart = this.currentUser.cart;
+      this.user=true;
+    }
+
   }
 
   computeTotal():void{
