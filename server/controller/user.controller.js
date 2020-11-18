@@ -14,13 +14,19 @@ var updateCart = (req,res)=>{
 
     UserModel.updateOne({_id:req.body._id},{$set:{cart:req.body.cart}},(err)=>console.log("HERE-> "+err));
 }
+var updateAccount = (req,res)=>{
+
+    UserModel.updateOne({_id:req.body._id},{$set:{fname:req.body.fname,
+        lname:req.body.lname,
+        email:req.body.email,
+        pasword:req.body.pasword,
+        admin:req.body.admin,
+        cart: req.body.cart}},(err)=>console.log("Update Account ERR-> "+err));
+}
 
 var addUser = (req,res)=>{
 
-    console.log("?HE OTHER SIDE: "+req.body.id+req.body.fname+req.body.lname+req.body.email+req.body.pasword+req.body.admin+req.body.cart);
-    //UserModel.updateOne({_id:req.body._id},{$set:{cart:req.body.cart}},(err)=>console.log("HERE-> "+err));
-
-    
+    //console.log("?HE OTHER SIDE: "+req.body.id+req.body.fname+req.body.lname+req.body.email+req.body.pasword+req.body.admin+req.body.cart);
 //CREATE A RECORD
     var user = new UserModel({ 
         _id: req.body.id,
@@ -34,10 +40,9 @@ var addUser = (req,res)=>{
         user.save((err,result)=>{
             if (err) throw err;
             res.json({"msg":"User record stored successfully"});
-
         }); 
 }
     
-module.exports = {GetAllUsersFromDb,updateCart,addUser};
+module.exports = {GetAllUsersFromDb,updateCart,addUser,updateAccount};
 
 

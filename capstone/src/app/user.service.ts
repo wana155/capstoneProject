@@ -21,4 +21,8 @@ export class UserService {
    addUser(userRef): Observable<any>{  
     return this.httpClient.post("http://localhost:9090/users/add",userRef);
    }
+   updateAccount(userRef): Observable<any>{  
+    return this.httpClient.post("http://localhost:9090/users/updateAcc",userRef);
+   }
+
 }

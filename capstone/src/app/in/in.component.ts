@@ -20,7 +20,8 @@ export class InComponent implements OnInit {
   newE:string;
   newP:string;
   newPt:string;
-
+findID:string;
+foundH:boolean;
    currentUser:User;
    in:boolean;
 
@@ -42,6 +43,7 @@ export class InComponent implements OnInit {
   this.editUser=false;
   this.editProduct=false;
   this.selectionButtons=false;
+  this.foundH=false;
    }
 
   ngOnInit(): void {
@@ -97,9 +99,35 @@ addUser(userRef){
   this.addUser(newUser);
     alert("Account Added");
     this.selectionButtons=false;
-    this.inp=""; 
-    this.newE ="";this.newF="";this.newL="";this.newP="";this.newPt="";adm="";
+    this.inp=""; this.newE ="";this.newF="";this.newL="";this.newP="";this.newPt="";adm="";
   }
   else{alert("❌: Registration unsuccessful, please try again!")}
 }
+
+updUser:User;
+
+find(){
+let foun=false;
+    for (let u of this.users){
+      if (u._id===parseInt(this.findID)){
+        this.updUser=u;
+        foun=true;
+      }
+  }
+   if(foun){
+    this.foundH=true;
+   }
+   else{alert("User record not found. Try again!")
+  this.foundH=false;
+  this.updUser=null;    }
+}
+
+updateAcc(userRef){
+  this.userService.updateAccount(userRef).subscribe(data=>this.result=data.msg);
+}
+updateUs(){
+
+   this.updateAcc(this.updUser);
+}
+
 }

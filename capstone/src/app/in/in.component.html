@@ -44,7 +44,7 @@
       
        <div *ngIf="inp=='UserAdd'||inp=='AdminAdd'"  aria-label="Basic example">
        <br> <br>
-       <h2 style="text-align: center;">Add an user:</h2>
+       <h2 style="text-align: center;">Add an {{inpd}}:</h2>
        <hr>
 
                 First Name: <input type="text" class="border-top-0 border-left-0 border-right-0" [(ngModel)]="newF" required><br><br>
@@ -55,11 +55,27 @@
                 <button (click)="register()" class="btn btn-success" style="float: right; margin: 5%;padding-right: 37%;padding-left: 38%;" > Register</button>
             <br>
             <br>
+      </div>
+      
+      <div *ngIf="inp=='UserEdit'||inp=='AdminEdit'" aria-label="Basic example">
+        <br> <br>
+       <h2 style="text-align: center;">Edit an {{inpd}}:</h2>
+       <hr>
+                Enter User ID:<input type="text" class="border-top-0 border-left-0 border-right-0" [(ngModel)]="findID" required><br><br>
+                <button (click)="find()" class="btn btn-success" style="float: right; margin: 5%;padding-right: 37%;padding-left: 38%;" > Find</button>
+         <div *ngIf="foundH"> <br> <br>
+                First Name: <input type="text" class="border-top-0 border-left-0 border-right-0" [(ngModel)]="updUser['fname']" required><br><br>
+                Last Name:<input type="text" class="border-top-0 border-left-0 border-right-0" [(ngModel)]="updUser.lname" required><br><br>
+                Email: <input type="text" class="border-top-0 border-left-0 border-right-0" [(ngModel)]="updUser.email" required><br><br>
+                Pasword:<input type="password" class="border-top-0 border-left-0 border-right-0" [(ngModel)]="updUser.pasword" required><br><br>
+                cart:<input type="text" class="border-top-0 border-left-0 border-right-0" [(ngModel)]="updUser.cart" required><br><br>
+                <button (click)="updateUs()" class="btn btn-success" style="float: right; margin: 5%;padding-right: 37%;padding-left: 38%;" > Update</button>
+            <br>
+            <br> 
+        </div>
+      </div>
 
-      </div>
-      <div *ngIf="inp=='UserEdit'" class="btn-group" role="group" aria-label="Basic example">
-        <p>EDIT USER</p>
-      </div>
+
       <div *ngIf="inp=='UserDelete'" class="btn-group" role="group" aria-label="Basic example">
         <p>DELETE USER</p>
       </div>
