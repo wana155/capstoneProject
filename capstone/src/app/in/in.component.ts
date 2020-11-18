@@ -168,6 +168,22 @@ let foun=false;
   this.updUser=null;    
   }
 }
+findoP(){
+  let foun=false;
+      for (let u of this.products){
+        if (u._id===parseInt(this.findID)){
+          this.newProd=u;
+          foun=true;
+        }
+    }
+     if(foun){
+      this.foundD=true;
+     }
+     else{alert("Product record not found. Try again!")
+    this.foundD=false;
+    this.newProd=null;    
+    }
+  }
 
 findo(){
   let foun=false;
@@ -211,9 +227,20 @@ updateUs(){
 deleteRecord(userId){
   this.userService.deleteAccount(userId).subscribe(data=>this.result=data.msg);
 }
+deleteProduct(Id){
+  this.productService.deleteProduct(Id).subscribe(data=>this.result=data.msg);
+}
+deleteRP(){
+  this.deleteProduct(this.newProd);
+  alert("Changes Completed");
+  this.foundD=false;
+  this.selectionButtons=false;
+  this.findID="";
+  this.inp="";
+}
 deleteR(){
   this.deleteRecord(this.updUser);
-  alert("Changes Completed"+this.updUser._id);
+  alert("Changes Completed");
   this.foundD=false;
   this.selectionButtons=false;
   this.findID="";
