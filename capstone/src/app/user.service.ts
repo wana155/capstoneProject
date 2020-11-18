@@ -14,10 +14,11 @@ export class UserService {
     return this.httpClient.get<User[]>("http://localhost:9090/users/alluse");
   }
    
-  updateUser(userRef): Observable<any>{
-    
+  updateUser(userRef): Observable<any>{  
     return this.httpClient.post("http://localhost:9090/users/updatecart",userRef);
-    
+   }
 
+   addUser(userRef): Observable<any>{  
+    return this.httpClient.post("http://localhost:9090/users/add",userRef);
    }
 }

@@ -13,21 +13,31 @@ var GetAllUsersFromDb = (req,res)=>{
 var updateCart = (req,res)=>{
 
     UserModel.updateOne({_id:req.body._id},{$set:{cart:req.body.cart}},(err)=>console.log("HERE-> "+err));
+}
+
+var addUser = (req,res)=>{
+
+    console.log("?HE OTHER SIDE: "+req.body.id+req.body.fname+req.body.lname+req.body.email+req.body.pasword+req.body.admin+req.body.cart);
+    //UserModel.updateOne({_id:req.body._id},{$set:{cart:req.body.cart}},(err)=>console.log("HERE-> "+err));
 
     
-/*/CREATE A RECORD
+//CREATE A RECORD
     var user = new UserModel({ 
-        _id: 4,
-        fname:"Carlos",
-        lname:"Gonzalez",
-        email:"gonza@tcs.com",
-        pasword:"400z",
-        admin:"no",
-        cart: [2,3,4]})
+        _id: req.body.id,
+        fname:req.body.fname,
+        lname:req.body.lname,
+        email:req.body.email,
+        pasword:req.body.pasword,
+        admin:req.body.admin,
+        cart: req.body.cart})
 
-        user.save((err,result)=>console.log("HOO--> "+err)); */
+        user.save((err,result)=>{
+            if (err) throw err;
+            res.json({"msg":"User record stored successfully"});
+
+        }); 
 }
     
-module.exports = {GetAllUsersFromDb,updateCart};
+module.exports = {GetAllUsersFromDb,updateCart,addUser};
 
 

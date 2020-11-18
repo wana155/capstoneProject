@@ -6,5 +6,6 @@ var UserController = require("../controller/user.controller");
 routeru.get("/alluse",UserController.GetAllUsersFromDb);
 
 routeru.post("/updatecart",UserController.updateCart);
+routeru.post("/add",UserController.addUser);
 
 module.exports = routeru;
