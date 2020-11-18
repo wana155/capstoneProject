@@ -13,4 +13,14 @@ export class ProductService {
   getAllProducts():Observable<Product[]>{
    return this.httpClient.get<Product[]>("http://localhost:9090/products/allpro");
   }
+
+   addProduct(userRef): Observable<any>{  
+    return this.httpClient.post("http://localhost:9090/products/add",userRef);
+   }
+   updateProduct(userRef): Observable<any>{  
+    return this.httpClient.post("http://localhost:9090/products/update",userRef);
+   }
+   deleteProduct(userRef): Observable<any>{  
+    return this.httpClient.post("http://localhost:9090/products/del",userRef);
+   }
 }
