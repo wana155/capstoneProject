@@ -80,16 +80,26 @@ export class InComponent implements OnInit {
         else{this.adminPortal=true;
           this.inform=false;}
       }
-      else {alert("❌: Sing in uncsuccessful, please try again!")}
+      else {alert("❌: Sing in unsuccessful, please try again!")}
   }
+  result:string;
+addUser(userRef){
+  this.userService.addUser(userRef).subscribe(data=>this.result=data.msg);
+}
 
   register()
 { 
-  alert(this.newF+" "+this.newL+" "+this.newE+" "+this.newP+" "+this.newPt);
-
   if(this.newP==this.newPt){
-    alert("registered");
+    var adm="yes";
+  if(this.inp=='UserAdd')
+  { adm = "no";}
+  let newUser = new User(this.users.length+1,this.newF,this.newL,this.newE,this.newP,adm,[]);
+  this.addUser(newUser);
+    alert("Account Added");
+    this.selectionButtons=false;
+    this.inp=""; 
+    this.newE ="";this.newF="";this.newL="";this.newP="";this.newPt="";adm="";
   }
-  else{alert("❌: Registration uncsuccessful, please try again!")}
+  else{alert("❌: Registration unsuccessful, please try again!")}
 }
 }
