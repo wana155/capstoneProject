@@ -12,6 +12,14 @@ export class InComponent implements OnInit {
   loginEmail:string;
   loginPass:string;
   loginAdmin:string;
+  inp:string;
+  inpd:string;
+
+  newF:string;
+  newL:string;
+  newE:string;
+  newP:string;
+  newPt:string;
 
    currentUser:User;
    in:boolean;
@@ -19,6 +27,7 @@ export class InComponent implements OnInit {
   userPortal:boolean;
   adminPortal:boolean;
   inform:boolean;
+  selectionButtons:boolean;
   
   editUser:boolean;
   editProduct:boolean;
@@ -32,6 +41,7 @@ export class InComponent implements OnInit {
   this.inform=true;
   this.editUser=false;
   this.editProduct=false;
+  this.selectionButtons=false;
    }
 
   ngOnInit(): void {
@@ -43,12 +53,15 @@ export class InComponent implements OnInit {
     });
   }
 
-  select(inp){
-    if(inp=="u"){
-      
-    }
-
+  select(ent){
+  this.inpd = ent;
+  this.inp = ent;
+  this.selectionButtons=true;
   } 
+  selecto(ent){
+    this.inp=this.inp+ent;
+
+    } 
 
   singIn():void{
     let found =false;
@@ -68,9 +81,15 @@ export class InComponent implements OnInit {
           this.inform=false;}
       }
       else {alert("❌: Sing in uncsuccessful, please try again!")}
-      
-    
-
   }
 
+  register()
+{ 
+  alert(this.newF+" "+this.newL+" "+this.newE+" "+this.newP+" "+this.newPt);
+
+  if(this.newP==this.newPt){
+    alert("registered");
+  }
+  else{alert("❌: Registration uncsuccessful, please try again!")}
+}
 }
