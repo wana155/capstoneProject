@@ -1,4 +1,4 @@
-<p>shop works!</p>
+
 <button (click)="loadProducts()" class=" btn btn-success"> pusha</button>
 
 <div *ngIf="single" class="container">
@@ -19,7 +19,7 @@
         </div>
         <div class="col-4">
             <div class="allViewDesc" style="border-style: solid; border-width: 10px;margin-top: 60px;">
-           <button class="btn btn-warning" > 🛒 Add to Cart</button>
+           <button class="btn btn-warning" (click)="addIt()" > 🛒 Add to Cart</button>
            <p style="padding-top: 20px;">🚚: FREE Shipping on orders over $25</p>
             </div>
         </div>

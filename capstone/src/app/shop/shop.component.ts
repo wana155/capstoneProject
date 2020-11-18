@@ -1,7 +1,11 @@
+import { localizedString } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { from } from 'rxjs';
 import { Product } from '../product.model';
 import { ProductService } from '../product.service';
+import { SharingService } from '../sharing.service';
+import { User } from '../user.model';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-shop',
@@ -14,19 +18,17 @@ export class ShopComponent implements OnInit {
   oneProduct:Product;
   flag:boolean;
   single:boolean;
+  currentUser:User;
 
-  
-
-  constructor(public productService:ProductService) { 
+  constructor(public productService:ProductService,public userService:UserService,private sharingService:SharingService) { 
     this.products = new Array<Product>();
     this.pgroups = new Array();
     this.single=false;
     //this.flag=false;
-  
   }
 
   ngOnInit(): void {
- 
+    this.currentUser =this.sharingService.getDataU();
   }
 
   loadProducts():void{
@@ -43,8 +45,11 @@ export class ShopComponent implements OnInit {
     this.oneProduct =p;
     window.scrollTo(0, 300);
   }
-  
-
+  result:string;
+  addIt(){
+    this.currentUser.cart.push(this.oneProduct.images);
+    this.userService.updateUser(this.currentUser).subscribe(data=>this.result=data.msg);
+  }
 
 
 }

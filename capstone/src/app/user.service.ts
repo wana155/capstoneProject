@@ -12,5 +12,12 @@ export class UserService {
 
   getAllUsers():Observable<User[]>{
     return this.httpClient.get<User[]>("http://localhost:9090/users/alluse");
+  }
+   
+  updateUser(userRef): Observable<any>{
+    
+    return this.httpClient.post("http://localhost:9090/users/updatecart",userRef);
+    
+
    }
 }
