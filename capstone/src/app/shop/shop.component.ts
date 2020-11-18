@@ -29,6 +29,8 @@ export class ShopComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser =this.sharingService.getDataU();
+    this.loadProducts();
+    this.flag=false;
   }
 
   loadProducts():void{

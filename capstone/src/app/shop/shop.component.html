@@ -1,5 +1,13 @@
 
-<button (click)="loadProducts()" class=" btn btn-success"> pusha</button>
+
+<div *ngIf="!flag">
+
+    <h3 style="margin-left: 20%;margin-top: 40px;">Welcome! <button (click)="loadProducts()" class=" btn btn-success"> Browse Products</button></h3>
+
+</div>
+<br>
+<br>
+<br>
 
 <div *ngIf="single" class="container">
     <div class="row" style="Background-color: white; padding: 25px; border-radius: 15px;">
