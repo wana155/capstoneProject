@@ -84,7 +84,7 @@ foundH:boolean;
       }
       else {alert("❌: Sing in unsuccessful, please try again!")}
   }
-  result:string;
+  result:any;
 addUser(userRef){
   this.userService.addUser(userRef).subscribe(data=>this.result=data.msg);
 }
@@ -119,15 +119,19 @@ let foun=false;
    }
    else{alert("User record not found. Try again!")
   this.foundH=false;
-  this.updUser=null;    }
+  this.updUser=null;    
+  }
 }
 
 updateAcc(userRef){
   this.userService.updateAccount(userRef).subscribe(data=>this.result=data.msg);
 }
 updateUs(){
-
    this.updateAcc(this.updUser);
+   alert("Changes Completed");
+   this.foundH=false;
+   this.selectionButtons=false;
+   this.inp="";
 }
 
 }

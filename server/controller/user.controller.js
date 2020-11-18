@@ -21,7 +21,10 @@ var updateAccount = (req,res)=>{
         email:req.body.email,
         pasword:req.body.pasword,
         admin:req.body.admin,
-        cart: req.body.cart}},(err)=>console.log("Update Account ERR-> "+err));
+        cart: req.body.cart}},(err)=>{
+            if (err) throw err;
+            res.json({"msg":"User record stored successfully"});
+        });
 }
 
 var addUser = (req,res)=>{
@@ -29,7 +32,7 @@ var addUser = (req,res)=>{
     //console.log("?HE OTHER SIDE: "+req.body.id+req.body.fname+req.body.lname+req.body.email+req.body.pasword+req.body.admin+req.body.cart);
 //CREATE A RECORD
     var user = new UserModel({ 
-        _id: req.body.id,
+        _id: req.body._id,
         fname:req.body.fname,
         lname:req.body.lname,
         email:req.body.email,

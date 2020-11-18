@@ -34,7 +34,7 @@
     <hr>
     <div *ngIf="!selectionButtons"class="btn-group" role="group" aria-label="Basic example">
         <button (click)="select('User')" type="button" class="btn btn-secondary" style="padding-left: 60px;padding-right: 60px;">Edit Users</button>
-        <button (click)="select('Admin')" type="button" class="btn btn-secondary"style="padding-left: 60px;padding-right: 60px;">Edit Products</button>
+        <button (click)="select('Admin')" type="button" class="btn btn-secondary"style="padding-left: 60px;padding-right: 60px;">Edit Admins</button>
       </div>
       <div *ngIf="selectionButtons" class="btn-group" role="group" aria-label="Basic example">
         <button (click)="selecto('Add')" type="button" class="btn btn-secondary" style="padding-left: 60px;padding-right: 60px;">Add {{inpd}}</button>
