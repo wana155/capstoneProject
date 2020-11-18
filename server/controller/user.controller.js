@@ -26,6 +26,24 @@ var updateAccount = (req,res)=>{
             res.json({"msg":"User record stored successfully"});
         });
 }
+var deleteAccount = (req,res)=>{
+    
+    UserModel.deleteOne({_id:req.body._id},(err,result)=>{
+        if (err) throw err;
+            res.json({"msg":"User record deleted successfully"});
+    })
+
+
+   /* UserModel.updateOne({_id:req.body._id},{$set:{fname:req.body.fname,
+        lname:req.body.lname,
+        email:req.body.email,
+        pasword:req.body.pasword,
+        admin:req.body.admin,
+        cart: req.body.cart}},(err)=>{
+            if (err) throw err;
+            res.json({"msg":"User record stored successfully"});
+        });*/
+}
 
 var addUser = (req,res)=>{
 
@@ -46,6 +64,6 @@ var addUser = (req,res)=>{
         }); 
 }
     
-module.exports = {GetAllUsersFromDb,updateCart,addUser,updateAccount};
+module.exports = {GetAllUsersFromDb,updateCart,addUser,updateAccount,deleteAccount};
 
 

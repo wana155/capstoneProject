@@ -22,6 +22,7 @@ export class InComponent implements OnInit {
   newPt:string;
 findID:string;
 foundH:boolean;
+foundD:boolean;
    currentUser:User;
    in:boolean;
 
@@ -44,6 +45,7 @@ foundH:boolean;
   this.editProduct=false;
   this.selectionButtons=false;
   this.foundH=false;
+  this.foundD=false;
    }
 
   ngOnInit(): void {
@@ -123,6 +125,23 @@ let foun=false;
   }
 }
 
+findo(){
+  let foun=false;
+      for (let u of this.users){
+        if (u._id===parseInt(this.findID)){
+          this.updUser=u;
+          foun=true;
+        }
+    }
+     if(foun){
+      this.foundD=true;
+     }
+     else{alert("User record not found. Try again!")
+    this.foundD=false;
+    this.updUser=null;    
+    }
+  }
+
 updateAcc(userRef){
   this.userService.updateAccount(userRef).subscribe(data=>this.result=data.msg);
 }
@@ -131,7 +150,19 @@ updateUs(){
    alert("Changes Completed");
    this.foundH=false;
    this.selectionButtons=false;
+   this.findID="";
    this.inp="";
+}
+deleteRecord(userId){
+  this.userService.deleteAccount(userId).subscribe(data=>this.result=data.msg);
+}
+deleteR(){
+  this.deleteRecord(this.updUser);
+  alert("Changes Completed"+this.updUser._id);
+  this.foundD=false;
+  this.selectionButtons=false;
+  this.findID="";
+  this.inp="";
 }
 
 }

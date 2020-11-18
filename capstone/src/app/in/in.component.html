@@ -75,10 +75,24 @@
         </div>
       </div>
 
-
-      <div *ngIf="inp=='UserDelete'" class="btn-group" role="group" aria-label="Basic example">
-        <p>DELETE USER</p>
+      <div *ngIf="inp=='UserDelete'||inp=='AdminDelete'" aria-label="Basic example">
+        <br> <br>
+       <h2 style="text-align: center;">Delete an {{inpd}}:</h2>
+       <hr>
+                Enter User ID:<input type="text" class="border-top-0 border-left-0 border-right-0" [(ngModel)]="findID" required><br><br>
+                <button (click)="findo()" class="btn btn-success" style="float: right; margin: 5%;padding-right: 37%;padding-left: 38%;" > Find</button>
+         <div *ngIf="foundD"> <br> <br>
+                 <p>First Name: {{updUser['fname']}} </p>
+                 <p>Last Name: {{updUser.lname}}</p>
+                 <p>Email: {{updUser.email}}</p>
+                <p>Pasword: {{updUser.pasword}}</p>
+                <p>cart: {{updUser.cart}}</p>
+                <button (click)="deleteR()" class="btn btn-success" style="float: right; margin: 5%;padding-right: 37%;padding-left: 38%;" > Delete</button>
+            <br>
+            <br> 
+        </div>
       </div>
+
       
 
 

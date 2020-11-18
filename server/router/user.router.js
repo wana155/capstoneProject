@@ -9,5 +9,6 @@ routeru.get("/alluse",UserController.GetAllUsersFromDb);
 routeru.post("/updatecart",UserController.updateCart);
 routeru.post("/add",UserController.addUser);
 routeru.post("/updateAcc",UserController.updateAccount);
+routeru.post("/del",UserController.deleteAccount);
 
 module.exports = routeru;
