@@ -20,6 +20,8 @@ export class InComponent implements OnInit {
   adminPortal:boolean;
   inform:boolean;
   
+  editUser:boolean;
+  editProduct:boolean;
   users:Array<User>;
 
 
@@ -28,6 +30,8 @@ export class InComponent implements OnInit {
   this.userPortal=false;
   this.adminPortal=false;
   this.inform=true;
+  this.editUser=false;
+  this.editProduct=false;
    }
 
   ngOnInit(): void {
@@ -38,6 +42,13 @@ export class InComponent implements OnInit {
       this.users=data; 
     });
   }
+
+  select(inp){
+    if(inp=="u"){
+      
+    }
+
+  } 
 
   singIn():void{
     let found =false;

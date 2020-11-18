@@ -7,3 +7,19 @@
     border-radius: 10px;
     
 }
+.formo{
+    margin-top: 0%; 
+}
+
+.formo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 35px;
+    color: black;
+    background:white;
+    border-radius: 9px;
+    border: black;
+    border-width: 52px;
+    border: 2px solid rgb(184, 184, 184);
+    }

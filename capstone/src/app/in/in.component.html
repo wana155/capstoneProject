@@ -19,15 +19,22 @@
     </div>
 </div>
 <hr>
-<div *ngIf="userPortal" style="background-color: rgb(60, 60, 245);padding: 5%;">
-    <div style="background-color: brown;">
-       Welcome Back {{currentUser.fname}}, You are a user. Browse and shop Around!
-    </div>
 
-</div>
-<div *ngIf="adminPortal" style="background-color: rgb(60, 60, 245);padding: 5%;">
-    <div style="background-color: brown;">
-       Welcome Back {{currentUser.fname}} You are a Admin.
-    </div>
+    
+        <div *ngIf="userPortal" class="container formo" >
+            <h2 style="padding-top: 10px;">User Portal </h2>
+            <h2 style="padding-top: 10px;">Welcome Back {{currentUser.fname}}! Let The Shopping Begin! </h2>
+        </div>
+    
+
+
+<div *ngIf="adminPortal" class="container formo" >
+    <h2 style="padding-top: 10px;">Admin Portal </h2>
+    <h2 style="padding-top: 10px;">Welcome Back {{currentUser.fname}}! </h2>
+    <hr>
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <button (click)="select()" type="button" class="btn btn-secondary" style="padding-left: 40px;padding-right: 40px;">Edit Users</button>
+        <button (click)="select()" type="button" class="btn btn-secondary"style="padding-left: 40px;padding-right: 40px;">Edit Products</button>
+      </div>
 
 </div>
